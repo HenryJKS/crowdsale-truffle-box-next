@@ -79,10 +79,28 @@ Interacting with the Contract
 To purchase tokens, use the buyTokens function of the Crowdsale contract. The example below shows how to buy 1 token:
 
 ```javascript
-const recipient = '<RECIPIENT_ADDRESS>';
-await crowdSale.buyTokens(recipient, { from: recipient, value: web3.utils.toWei("1", "wei") });
-
-| Paramater      | Type | Description |
-| `beneficiary`      | address | The address of the recipient of the tokens. |
-| `msg.value`   | uint256 |The value in Wei sent for the purchase.|
+const recipient = "<RECIPIENT_ADDRESS>";
+await crowdSale.buyTokens(recipient, {
+  from: recipient,
+  value: web3.utils.toWei("1", "wei"),
+});
 ```
+
+| Paramater     | Type    | Description                                 |
+| ------------- | ------- | ------------------------------------------- |
+| `beneficiary` | address | The address of the recipient of the tokens. |
+| `msg.value`   | uint256 | The value in Wei sent for the purchase.     |
+
+Contract Structure
+Crowdsale
+The Crowdsale contract has the following functionalities:
+
+Constructor: Initializes the contract with the rate, wallet, and token.
+buyTokens: Allows the purchase of tokens, validating the transaction and emitting a TokenPurchase event.
+\_forwardFunds: Forwards the funds to the specified address.
+
+## Events
+
+| Event           | Description                               |
+| --------------- | ----------------------------------------- |
+| `TokenPurchase` | Emits an event when tokens are purchased. |
