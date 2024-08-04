@@ -1,5 +1,6 @@
 const TokenErc20 = artifacts.require("TokenErc20");
-const CrowdSale = artifacts.require("CrowdSale");
+const TokenSale = artifacts.require("TokenSale");
+const KycContract = artifacts.require("KycContract");
 require("dotenv").config({ path: "../.env" });
 
 module.exports = async function (deployer, _, accounts) {
@@ -8,11 +9,15 @@ module.exports = async function (deployer, _, accounts) {
 
   // Deploy TokenErc20 contract
   await deployer.deploy(TokenErc20, name, symbol, process.env.INITIALTOKEN);
+  
+  // Deploy Kyc contract
+  await deployer.deploy(KycContract)
 
-  // Deploy CrowdSale contract
-  await deployer.deploy(CrowdSale, 1, accounts[0], TokenErc20.address);
+  // Deploy TokenSale contract
+  await deployer.deploy(TokenSale, 1, accounts[0], TokenErc20.address, KycContract.address);
+
 
   const instanceToken = await TokenErc20.deployed();
 
-  await instanceToken.transfer(CrowdSale.address, process.env.INITIALTOKEN);
+  await instanceToken.transfer(TokenSale.address, process.env.INITIALTOKEN);
 };
