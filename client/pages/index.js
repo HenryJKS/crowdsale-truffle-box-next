@@ -1,12 +1,17 @@
-// create de index page
-import React from "react";
+import React, { Component } from "react";
+import Layout from "../components/Layout";
+import WalletButton from "../components/web3";
+import FormToken from "../components/FormToken";
 
-const Index = () => {
-  return (
-    <div>
-      <h1>Home page</h1>
-    </div>
-  );
-};
+class Index extends Component {
+  render() {
+    return (
+      <Layout>
+        <WalletButton />
+        <FormToken />
+      </Layout>
+    );
+  }
+}
 
 export default Index;
