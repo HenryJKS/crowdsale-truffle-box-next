@@ -97,7 +97,8 @@ The Crowdsale contract has the following functionalities:
 
 Constructor: Initializes the contract with the rate, wallet, and token.
 buyTokens: Allows the purchase of tokens, validating the transaction and emitting a TokenPurchase event.
-\_forwardFunds: Forwards the funds to the specified address.
+
+forwardFunds: Forwards the funds to the specified address.
 
 ## Events
 

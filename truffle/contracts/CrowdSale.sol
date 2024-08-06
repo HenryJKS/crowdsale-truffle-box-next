@@ -17,7 +17,7 @@ import "./KycContract.sol";
  * the methods to add functionality. Consider using 'super' where appropiate to concatenate
  * behavior.
  */
-contract Crowdsale {
+contract CrowdSale {
     using SafeMath for uint256;
 
     // The token being sold

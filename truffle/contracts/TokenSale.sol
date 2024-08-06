@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.0;
 
-import "./Crowdsale.sol";
+import "./CrowdSale.sol";
 import "./KycContract.sol";
 
-contract TokenSale is Crowdsale {
+contract TokenSale is CrowdSale {
     KycContract kyc;
 
     constructor(
@@ -12,7 +12,7 @@ contract TokenSale is Crowdsale {
         address _wallet,
         ERC20 _token,
         KycContract _kyc
-    ) Crowdsale(_rate, _wallet, _token) {
+    ) CrowdSale(_rate, _wallet, _token) {
         kyc = KycContract(_kyc);
     }
 

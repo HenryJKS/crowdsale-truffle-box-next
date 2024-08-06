@@ -41,10 +41,10 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require("dotenv").config();
+const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   /**
@@ -56,6 +56,7 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
+  contracts_build_directory: "../client/src/contracts",
 
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
@@ -74,6 +75,18 @@ module.exports = {
       host: "127.0.0.1",
       port: 7545,
       network_id: "5777",
+    },
+
+    sepolia: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://sepolia.infura.io/v3/${PROJECT_ID}`
+        ),
+      network_id: 11155111, // Sepolia's id
+      confirmations: 2, // # of confirmations to wait between deployments. (default: 0)
+      timeoutBlocks: 1000, // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: false, // Skip dry run before migrations? (default: false for public nets )
     },
     //
     // An additional network, but with some advanced options…
