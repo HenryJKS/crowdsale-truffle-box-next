@@ -2,8 +2,8 @@ import { web3 } from "./web3";
 import Kyc from "../src/contracts/KycContract.json";
 import KycAddress from "../src/contracts/TokenSaleAddress.json";
 
-const tokensale = () => {
+const kyc = () => {
   return new web3.eth.Contract(Kyc.abi, KycAddress.addressKyc);
 };
 
-export default tokensale;
+export default kyc;
